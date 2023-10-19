@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Cloning') {
             steps {
-                checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'Github', url: 'https://github.com/Pradeep1433617/portfolio.git']])
+                checkout scmGit(branches: [[name: '*/testing']], extensions: [], userRemoteConfigs: [[credentialsId: 'Github', url: 'https://github.com/Pradeep1433617/portfolio.git']])
             }
         }
         stage('Docker Image'){
