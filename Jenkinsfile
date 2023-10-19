@@ -8,21 +8,21 @@ pipeline {
         }
         stage('Docker Image'){
             steps{
-                sh 'docker build -t personal .'
+                sh 'docker build -t my-portfolio .'
             }
 
         }
         stage('Build and Run Conatiner'){
             steps{
-                sh 'docker run -d -p 8081:80 personal .'
+                sh 'docker run -d -p 8082:80 my-portfolio .'
             }
 
         }
         stage('Docker Push') {
             steps {
-      	        withCredentials([usernamePassword(credentialsId: 'dockerHub', passwordVariable: 'dockerHubPassword', usernameVariable: 'dockerHubUser')]) {
+      	        withCredentials([usernamePassword(credentialsId: 'DockerHub', passwordVariable: 'dockerHubPassword', usernameVariable: 'dockerHubUser')]) {
         	    sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPassword}"
-                sh 'docker push shanem/spring-petclinic:latest'
+                sh 'docker push my-portfolio'
                 }
         }
         
