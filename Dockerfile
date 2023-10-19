@@ -1,8 +1,11 @@
+FROM python:3.11
 
-FROM nginx:latest
+WORKDIR /app
 
-COPY ./ /usr/share/nginx/html/
+COPY . /app
 
+COPY entrypoint.sh /entrypoint.sh
 
+RUN chmod +x /entrypoint.sh
 
-EXPOSE 80
+ENTRYPOINT ["/entrypoint.sh"]
