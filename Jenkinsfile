@@ -22,6 +22,7 @@ pipeline {
             steps {
       	        withCredentials([usernamePassword(credentialsId: 'DockerHub', passwordVariable: 'dockerHubPassword', usernameVariable: 'dockerHubUser')]) {
         	    sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPassword}"
+                sh "chmod +x"
                 sh 'docker push my-portfolio'
                 }
             }
